@@ -36,7 +36,6 @@ class CollectOrderState{
       int active =0;
       // for each order in document
       doc.data.values.forEach((value) {
-
         //place any restrictions here...
 
         if (value["active"] ==1 && value["checkOut"]=="Yes" && value["driverSeen"]=="Yes" &&value["driverSeenOrderNumber"]=="No" ) {
