@@ -50,10 +50,8 @@ class DriverViewState{
           customers.add(customer);
         }
       }
-
     });
     return customers;
-
   }
 
 
@@ -66,9 +64,10 @@ class DriverViewState{
     for(int i = 0;i<titles.length;i++){
       await Firestore.instance.collection("OrdersRefined").document(docId).updateData({
         "${titles[i]}.driverSeen":"Yes",
+        "${titles[i]}.driverSeenOrderNumber":"No",
+
       },);
     }
-
   }
 
   Future<String> ensureApprovedDriver() async{

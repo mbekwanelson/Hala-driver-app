@@ -2,6 +2,7 @@ import 'package:driverapp/Models/Customer.dart';
 import 'package:driverapp/Screens/CollectOrder.dart';
 import 'package:driverapp/Shared/Database.dart';
 import 'package:driverapp/Shared/UserDrawer.dart';
+import 'package:driverapp/States/CollectOrderState.dart';
 import 'package:driverapp/States/DriverViewState.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +71,7 @@ class _DriverViewState extends State<DriverView> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => StreamProvider<List<Customer>>.value(
-                              value: DriverViewState().customerDriver(),
+                              value: CollectOrderState().driverCollectOrder(),
                               child: CollectOrder(
                                 customer: customers[index],
                               ),
