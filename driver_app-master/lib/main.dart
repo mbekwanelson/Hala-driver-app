@@ -10,6 +10,7 @@ import 'package:driverapp/States/appState.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:developer' as dev;
 
 import 'Navigator/Wrapper.dart';
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Uber clone',
+      title: 'Hala Driver',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

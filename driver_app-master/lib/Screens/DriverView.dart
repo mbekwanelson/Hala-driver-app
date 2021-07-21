@@ -7,6 +7,7 @@ import 'package:driverapp/States/DriverViewState.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:developer' as dev;
 
 class DriverView extends StatefulWidget {
   @override
@@ -70,12 +71,13 @@ class _DriverViewState extends State<DriverView> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => StreamProvider<List<Customer>>.value(
-                              value: CollectOrderState().driverCollectOrder(),
-                              child: CollectOrder(
-                                customer: customers[index],
-                              ),
-                            )
+                            builder: (context) => StreamProvider<List<Customer>>
+                                .value(
+                                  value: CollectOrderState().driverCollectOrder(),
+                                  child: CollectOrder(
+                                    customer: customers[index],
+                                  ),
+                                )
 
                               )
                     );

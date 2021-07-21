@@ -49,7 +49,6 @@ class _WrapperState extends State<Wrapper> {
             providers: [
               ChangeNotifierProvider
                   .value(value: UserDrawerState()),
-                //StreamProvider<List<LocationN>>.value(value:DataBase().DriverLocation()),
                 StreamProvider<List<Customer>>
                     .value(value: DriverViewState().customerDriver())
             ],

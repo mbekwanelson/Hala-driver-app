@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:flutter/services.dart';
+import 'package:commons/commons.dart';
 
 import '../main.dart';
 
@@ -118,6 +119,17 @@ class _ArrivedScreenState extends State<ArrivedScreen> {
                               ArrivedScreenState().driverArrived(
                                   widget.customer.custId,
                                   widget.customer.orderNames);
+
+                              successDialog(
+                                  context,
+                                  "Customer Successfully Notified You Are Waiting Outside",
+                                  positiveAction: (){},
+                                  positiveText: "Confirm  ",
+                                  negativeAction: (){},
+                                  negativeText: "    ",
+                                  neutralText: "        "
+                              );
+
                             },
                           ),
                           shape: RoundedRectangleBorder(
@@ -168,9 +180,12 @@ class _ArrivedScreenState extends State<ArrivedScreen> {
                               ),
                             ),
                             onTap: () async {
+
+
                               ArrivedScreenState().orderDelivered(
                                   widget.customer.custId,
                                   widget.customer.orderNames);
+
                               Navigator.pop(context);
                               Navigator.push(
                                   context,
