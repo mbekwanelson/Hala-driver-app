@@ -1,5 +1,6 @@
 import 'package:driverapp/Authenticate/SignIn.dart';
 import 'package:driverapp/Models/Customer.dart';
+import 'package:driverapp/Models/CustomerActive.dart';
 import 'package:driverapp/Screens/DriverView.dart';
 import 'package:driverapp/Shared/Loading.dart';
 import 'package:driverapp/States/DriverViewState.dart';
@@ -20,7 +21,8 @@ class _WrapperState extends State<Wrapper> {
 
   @override
   Widget build(BuildContext context) {
-    dynamic user = Provider.of<FirebaseUser>(context); // acessing user data from
+    FirebaseUser user = Provider.of<FirebaseUser>(context); // acessing user data from
+
     if (user==null){
       // user not signed in
       return ChangeNotifierProvider.value(
@@ -30,7 +32,7 @@ class _WrapperState extends State<Wrapper> {
     }
     else{
       if(n == 0){
-        DriverViewState()
+        DriverViewState(driverId: user.uid)
             .ensureApprovedDriver()
             .then((value){
           setState(() {
@@ -50,7 +52,11 @@ class _WrapperState extends State<Wrapper> {
               ChangeNotifierProvider
                   .value(value: UserDrawerState()),
                 StreamProvider<List<Customer>>
-                    .value(value: DriverViewState().customerDriver())
+                    .value(value: DriverViewState(driverId: user.uid).customerDriver()),
+
+              StreamProvider<List<CustomerActive>>
+                  .value(value: DriverViewState(driverId: user.uid).customerDriverActive()),
+
             ],
             child: DriverView()
         );
