@@ -1,4 +1,5 @@
 import 'package:driverapp/Models/Customer.dart';
+import 'package:driverapp/Models/CustomerActive.dart';
 import 'package:driverapp/Screens/ArrivedScreen.dart';
 import 'package:driverapp/Screens/MyHomePage.dart';
 import 'package:driverapp/Shared/Database.dart';
@@ -8,18 +9,20 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CollectOrder extends StatefulWidget {
-  Customer customer;
-  CollectOrder({this.customer});
+  dynamic customer;
+  bool seen;
+  CollectOrder({this.customer,this.seen});
 
   @override
   _CollectOrderState createState() => _CollectOrderState();
 }
 
 class _CollectOrderState extends State<CollectOrder> {
-  Customer currentCustomer;
+  dynamic currentCustomer;
+  dynamic customers;
 
-  getCurrentOrder(List<Customer> customers){
-    for(Customer customer in customers){
+  getCurrentOrder(dynamic customers){
+    for(dynamic customer in customers){
       if(customer.custId == widget.customer.custId){
         setState(() {
           currentCustomer = customer;
@@ -27,12 +30,25 @@ class _CollectOrderState extends State<CollectOrder> {
       }
     }
   }
+
   @override
   Widget build(BuildContext context) {
-    final customers = Provider.of<List<Customer>>(context);
+
+
+      if(widget.seen && widget.seen!=null ){
+        customers = Provider.of<List<CustomerActive>>(context);
+      }
+      else{
+        customers = Provider.of<List<Customer>>(context);
+      }
+
+
+
+
 
 
     if(customers==null && currentCustomer==null) {
+
       return Scaffold(
           body:Container(
             child: Text(

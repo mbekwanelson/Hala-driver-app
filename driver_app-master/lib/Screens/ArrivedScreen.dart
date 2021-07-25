@@ -12,7 +12,7 @@ import 'package:commons/commons.dart';
 import '../main.dart';
 
 class ArrivedScreen extends StatefulWidget {
-  Customer customer;
+  dynamic customer;
   ArrivedScreen({this.customer});
 
   @override
