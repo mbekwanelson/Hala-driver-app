@@ -91,6 +91,12 @@ class _CollectOrderState extends State<CollectOrder> {
                             style: TextStyle(
                                 fontSize: 30
                             )
+                        ),
+                        Text(
+                            "Payment Method: ${currentCustomer.paymentMethod}",
+                            style: TextStyle(
+                                fontSize: 30
+                            )
                         )
 
                       ],

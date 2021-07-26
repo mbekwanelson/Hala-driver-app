@@ -40,6 +40,7 @@ class CollectOrderState{
       // element == each order(for specific user) [number of orders]
       int n=0;
       int active =0;
+      String paymentMethod;
       // for each order in document
       print("${doc.documentID}");
       if(doc.documentID != "placeholder"){
@@ -53,13 +54,16 @@ class CollectOrderState{
             shop = value["shop"] ?? " ";
             orderNumber = value["orderNumber"] ?? "Pending";
             title = value["title"];
+            paymentMethod = value["Payment Method"];
             custID = doc.documentID;
             if (n == 1) {
 
               customer = Customer(
                   custId: custID,
                   orderNumber: orderNumber,
-                  shop: shop);
+                  shop: shop,
+                  paymentMethod: paymentMethod
+              );
             }
             customer.addOrderName(title);
           }
@@ -90,6 +94,7 @@ class CollectOrderState{
       // element == each order(for specific user) [number of orders]
       int n=0;
       int active =0;
+      String paymentMethod;
       // for each order in document
       print("${doc.documentID}");
       if(doc.documentID != "placeholder"){
@@ -103,13 +108,16 @@ class CollectOrderState{
             shop = value["shop"] ?? " ";
             orderNumber = value["orderNumber"] ?? "Pending";
             title = value["title"];
+            paymentMethod = value["Payment Method"];
             custID = doc.documentID;
             if (n == 1) {
 
               customer = CustomerActive(
                   custId: custID,
                   orderNumber: orderNumber,
-                  shop: shop);
+                  shop: shop,
+                  paymentMethod: paymentMethod
+              );
             }
             customer.addOrderName(title);
           }

@@ -3,10 +3,11 @@ class CustomerActive{
   String custId;
   String orderNumber;
   String shop;
+  String paymentMethod;
   List<String> orderNames = [];
 
 
-  CustomerActive({this.custId,this.orderNumber,this.shop});
+  CustomerActive({this.custId,this.orderNumber,this.shop,this.paymentMethod});
 
 
   addOrderName(String name){

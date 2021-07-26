@@ -25,6 +25,7 @@ class DriverViewState{
 
       int n=0;
       int active =0;
+      String paymentMethod;
       // for each order in document
       if(doc.documentID != "placeholder"){
         doc.data.values.forEach((value) {
@@ -36,12 +37,14 @@ class DriverViewState{
             shop = value["shop"] ?? " ";
             orderNumber = value["orderNumber"] ?? "Pending";
             title = value["title"];
+            paymentMethod = value["Payment Method"];
             custID = doc.documentID;
             if (n == 1) {
               customer = Customer(
                   custId: custID,
                   orderNumber: orderNumber,
-                  shop: shop);
+                  shop: shop,
+                  paymentMethod: paymentMethod);
             }
             customer.addOrderName(title);
           }
@@ -74,6 +77,7 @@ class DriverViewState{
     String shop;
     String orderNumber;
     String title;// so that i can access order later on
+    String paymentMethod;
     //doc == each user
     snapshot.documents.forEach((doc) {
       // element == each order(for specific user) [number of orders]
@@ -92,16 +96,19 @@ class DriverViewState{
             shop = value["shop"] ?? " ";
             orderNumber = value["orderNumber"] ?? "Pending";
             title = value["title"];
+            paymentMethod = value["Payment Method"];
+
             custID = doc.documentID;
             if (n == 1) {
               customer = CustomerActive(
                   custId: custID,
                   orderNumber: orderNumber,
-                  shop: shop);
+                  shop: shop,
+                  paymentMethod: paymentMethod
+              );
             }
             customer.addOrderName(title);
           }
-
         });
         if(active>0) {
           if (customer != null) {
