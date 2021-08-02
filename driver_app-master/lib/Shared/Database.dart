@@ -22,7 +22,6 @@ class DataBase{
 
 
   Future loadLocation(double latitude,double longitude,String uid) async{
-
     return await Firestore.instance
         .collection("Location")
         .document(uid)
